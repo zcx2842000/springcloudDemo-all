@@ -1,0 +1,26 @@
+server:
+  port: 8773
+
+spring:
+  application:
+    name: service-turbine
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8760/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+
+turbine:
+  app-config: service-hi,service-hi2
+  aggregator:
+    cluster-config: default
+  combine-host-port: true
+  cluster-name-expression: new String("default")
