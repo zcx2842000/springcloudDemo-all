@@ -1,0 +1,9 @@
+#spring:
+#  profiles:
+#    include: peer1
+#
+
+spring:
+  profiles:
+    include: peer1,peer2
+

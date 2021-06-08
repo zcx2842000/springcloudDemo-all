@@ -1,0 +1,30 @@
+
+server:
+  port: 8775
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer2:8771/eureka
+  instance:
+    hostname: service-gateway
+
+#gateWay
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lower-case-service-id: true
+      routes:
+      - id: service-hi
+        uri: lb://SERVICE-HI
+        predicates:
+          - Path=/demo/**
+        filters:
+          - StripPrefix=1
+  application:
+    name: servcice-gateway
